@@ -1,38 +1,38 @@
-
 let nama, val;
 const url_string = document.URL;
 const url = new URL(url_string);
 let sender;
 
-if (url.searchParams.get('by') != null) {
-  sender = url.searchParams.get('by');
+if (url.searchParams.get("by") != null) {
+  sender = url.searchParams.get("by");
 } else {
-  sender = "Adam";
+  sender = "Alimss";
 }
 
 let footer = document.getElementById("credit");
 footer.innerHTML = sender;
-footer.href = "https://www.instagram.com/adamukti/";
+footer.href = "https://www.instagram.com/alimsuma/";
 
-document.querySelector(".tombol").addEventListener('click', function () {
-  Swal.fire("Hallo Sayangku", "Aku ada pertanyaan nih buat kamu?", "question").then(function () {
+document.querySelector(".tombol").addEventListener("click", function () {
+  Swal.fire(
+    "Hallo Sayangku",
+    "Aku ada pertanyaan nih buat kamu?",
+    "question"
+  ).then(function () {
     Swal.fire("Jawab yang jujur ya!").then(function () {
       Swal.fire("Awas aja kalo boong!!", "", "error").then(function () {
-
-        const {
-          value: name
-        } = Swal.fire({
-          title: 'Masukin nama kamu dulu',
-          input: 'text',
-          inputLabel: '',
+        const { value: name } = Swal.fire({
+          title: "Masukin nama kamu dulu",
+          input: "text",
+          inputLabel: "",
           showCancelButton: true,
           inputValidator: (value) => {
             if (!value) {
-              return 'Isi dulu dong beb'
+              return "Isi dulu dong beb";
             } else {
               nama = value;
             }
-          }
+          },
         }).then(function () {
           const pertanyaan = Swal.fire({
             title: `${nama} sayang ga sama ${sender}?`,
@@ -43,70 +43,84 @@ document.querySelector(".tombol").addEventListener('click', function () {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              Swal.fire(`${sender} juga sayang banget sama ${nama}`).then(function () {
-                Swal.fire({
-                  title: 'Seberapa sayang emangnya?',
-                  icon: 'question',
-                  input: 'range',
-                  inputLabel: 'Antara 1 - 100 ya',
-                  inputAttributes: {
-                    min: 1,
-                    max: 100,
-                    step: 1
-                  },
-                  inputValue: 50
-                }).then((e) => {
-                  val = e.value
-                  Swal.fire(`Makasih ya udah sayang sama ${sender} ${val}%`).then(function () {
-                    Swal.fire({
-                      title: `Sekarang ${nama} kangen ga sama ${sender}?`,
-                      showDenyButton: true,
-                      showCancelButton: false,
-                      confirmButtonText: `Kangen :(`,
-                      denyButtonText: `Gak!`,
-                    }).then((result) => {
-                      /* Read more about isConfirmed, isDenied below */
-                      if (result.isConfirmed) {
-                        Swal.fire(`Huhu iya ${sender} juga kangen ${nama} :((`).then(function () {
-                          Swal.fire('Terakhir deh sayang').then(function () {
-                            Swal.fire('Coba klik ikon hati di paling bawah dong')
-                          })
-                        })
-                      } else if (result.isDenied) {
-                        Swal.fire('Jahat banget emang ga kangen sama pacar sendiri', '', 'error').then(function () {
-                          Swal.fire('Yaudah deh bye!')
-                        })
-                      }
-                    })
-                  })
-                })
-              })
+              Swal.fire(`${sender} juga sayang banget sama ${nama}`).then(
+                function () {
+                  Swal.fire({
+                    title: "Seberapa sayang emangnya?",
+                    icon: "question",
+                    input: "range",
+                    inputLabel: "Antara 1 - 100 ya",
+                    inputAttributes: {
+                      min: 1,
+                      max: 100,
+                      step: 1,
+                    },
+                    inputValue: 50,
+                  }).then((e) => {
+                    val = e.value;
+                    Swal.fire(
+                      `Makasih ya udah sayang sama ${sender} ${val}%`
+                    ).then(function () {
+                      Swal.fire({
+                        title: `Sekarang ${nama} kangen ga sama ${sender}?`,
+                        showDenyButton: true,
+                        showCancelButton: false,
+                        confirmButtonText: `Kangen :(`,
+                        denyButtonText: `Gak!`,
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                          Swal.fire(
+                            `Huhu iya ${sender} juga kangen ${nama} :((`
+                          ).then(function () {
+                            Swal.fire("Terakhir deh sayang").then(function () {
+                              Swal.fire(
+                                "Coba klik ikon hati di paling bawah dong"
+                              );
+                            });
+                          });
+                        } else if (result.isDenied) {
+                          Swal.fire(
+                            "Jahat banget emang ga kangen sama pacar sendiri",
+                            "",
+                            "error"
+                          ).then(function () {
+                            Swal.fire("Yaudah deh bye!");
+                          });
+                        }
+                      });
+                    });
+                  });
+                }
+              );
             } else if (result.isDenied) {
-              Swal.fire(`Yakin ga suka sama ${sender}?`, '', 'error').then(function () {
-                Swal.fire('Yaudah deh bye!')
-              })
+              Swal.fire(`Yakin ga suka sama ${sender}?`, "", "error").then(
+                function () {
+                  Swal.fire("Yaudah deh bye!");
+                }
+              );
             }
-          })
-        })
+          });
+        });
       });
     });
   });
 });
 
-
-
-document.querySelector('.hati').addEventListener('click', function () {
+document.querySelector(".hati").addEventListener("click", function () {
   confetti();
-  const teks = document.getElementById('teks');
-  const btn = document.querySelector('.tombol');
-  teks.classList.remove('d-none')
-  btn.classList.add('d-none')
+  const teks = document.getElementById("teks");
+  const btn = document.querySelector(".tombol");
+  teks.classList.remove("d-none");
+  btn.classList.add("d-none");
   setTimeout(() => {
-    document.querySelector('.prank').innerHTML = `Tapi Boong <span style='font-size:100px;'>&#128539;</span>`
-  }, 3000)
-})
+    document.querySelector(
+      ".prank"
+    ).innerHTML = `Tapi Boong <span style='font-size:100px;'>&#128539;</span>`;
+  }, 3000);
+});
 
-'use strict';
+("use strict");
 
 // If set to true, the user must press
 // UP UP DOWN ODWN LEFT RIGHT LEFT RIGHT A B
@@ -126,11 +140,11 @@ function confetti() {
     frame = undefined,
     confetti = [];
 
-  var runFor = 2000
-  var isRunning = true
+  var runFor = 2000;
+  var isRunning = true;
 
   setTimeout(() => {
-    isRunning = false
+    isRunning = false;
   }, runFor);
 
   // Settings
@@ -143,57 +157,61 @@ function confetti() {
     sizeMax = 12 - sizeMin,
     eccentricity = 10,
     deviation = 100,
-    dxThetaMin = -.1,
+    dxThetaMin = -0.1,
     dxThetaMax = -dxThetaMin - dxThetaMin,
-    dyMin = .13,
-    dyMax = .18,
-    dThetaMin = .4,
-    dThetaMax = .7 - dThetaMin;
+    dyMin = 0.13,
+    dyMax = 0.18,
+    dThetaMin = 0.4,
+    dThetaMax = 0.7 - dThetaMin;
 
   var colorThemes = [
     function () {
-      return color(200 * random() | 0, 200 * random() | 0, 200 * random() | 0);
+      return color(
+        (200 * random()) | 0,
+        (200 * random()) | 0,
+        (200 * random()) | 0
+      );
     },
     function () {
-      var black = 200 * random() | 0;
+      var black = (200 * random()) | 0;
       return color(200, black, black);
     },
     function () {
-      var black = 200 * random() | 0;
+      var black = (200 * random()) | 0;
       return color(black, 200, black);
     },
     function () {
-      var black = 200 * random() | 0;
+      var black = (200 * random()) | 0;
       return color(black, black, 200);
     },
     function () {
-      return color(200, 100, 200 * random() | 0);
+      return color(200, 100, (200 * random()) | 0);
     },
     function () {
-      return color(200 * random() | 0, 200, 200);
+      return color((200 * random()) | 0, 200, 200);
     },
     function () {
-      var black = 256 * random() | 0;
+      var black = (256 * random()) | 0;
       return color(black, black, black);
     },
     function () {
-      return colorThemes[random() < .5 ? 1 : 2]();
+      return colorThemes[random() < 0.5 ? 1 : 2]();
     },
     function () {
-      return colorThemes[random() < .5 ? 3 : 5]();
+      return colorThemes[random() < 0.5 ? 3 : 5]();
     },
     function () {
-      return colorThemes[random() < .5 ? 2 : 4]();
-    }
+      return colorThemes[random() < 0.5 ? 2 : 4]();
+    },
   ];
 
   function color(r, g, b) {
-    return 'rgb(' + r + ',' + g + ',' + b + ')';
+    return "rgb(" + r + "," + g + "," + b + ")";
   }
 
   // Cosine interpolation
   function interpolation(a, b, t) {
-    return (1 - cos(PI * t)) / 2 * (b - a) + a;
+    return ((1 - cos(PI * t)) / 2) * (b - a) + a;
   }
 
   // Create a 1D Maximal Poisson Disc over [0, 1]
@@ -208,22 +226,28 @@ function confetti() {
       spline = [0, 1];
     while (measure) {
       var dart = measure * random(),
-        i, l, interval, a, b, c, d;
+        i,
+        l,
+        interval,
+        a,
+        b,
+        c,
+        d;
 
       // Find where dart lies
       for (i = 0, l = domain.length, measure = 0; i < l; i += 2) {
-        a = domain[i], b = domain[i + 1], interval = b - a;
+        (a = domain[i]), (b = domain[i + 1]), (interval = b - a);
         if (dart < measure + interval) {
-          spline.push(dart += a - measure);
+          spline.push((dart += a - measure));
           break;
         }
         measure += interval;
       }
-      c = dart - radius, d = dart + radius;
+      (c = dart - radius), (d = dart + radius);
 
       // Update the domain
       for (i = domain.length - 1; i > 0; i -= 2) {
-        l = i - 1, a = domain[l], b = domain[i];
+        (l = i - 1), (a = domain[l]), (b = domain[i]);
         // c---d          c---d  Do nothing
         //   c-----d  c-----d    Move interior
         //   c--------------d    Delete interval
@@ -231,7 +255,8 @@ function confetti() {
         //       a------b
         if (a >= c && a < d)
           if (b > d) domain[l] = d; // Move interior (Left case)
-          else domain.splice(l, 2); // Delete interval
+          else domain.splice(l, 2);
+        // Delete interval
         else if (a < c && b > c)
           if (b <= d) domain[i] = c; // Move interior (Right case)
           else domain.splice(i, 0, c, d); // Split interval
@@ -246,46 +271,45 @@ function confetti() {
   }
 
   // Create the overarching container
-  var container = document.createElement('div');
-  container.style.position = 'fixed';
-  container.style.top = '0';
-  container.style.left = '0';
-  container.style.width = '100%';
-  container.style.height = '0';
-  container.style.overflow = 'visible';
-  container.style.zIndex = '9999';
+  var container = document.createElement("div");
+  container.style.position = "fixed";
+  container.style.top = "0";
+  container.style.left = "0";
+  container.style.width = "100%";
+  container.style.height = "0";
+  container.style.overflow = "visible";
+  container.style.zIndex = "9999";
 
   // Confetto constructor
   function Confetto(theme) {
     this.frame = 0;
-    this.outer = document.createElement('div');
-    this.inner = document.createElement('div');
+    this.outer = document.createElement("div");
+    this.inner = document.createElement("div");
     this.outer.appendChild(this.inner);
 
     var outerStyle = this.outer.style,
       innerStyle = this.inner.style;
-    outerStyle.position = 'absolute';
-    outerStyle.width = (sizeMin + sizeMax * random()) + 'px';
-    outerStyle.height = (sizeMin + sizeMax * random()) + 'px';
-    innerStyle.width = '100%';
-    innerStyle.height = '100%';
+    outerStyle.position = "absolute";
+    outerStyle.width = sizeMin + sizeMax * random() + "px";
+    outerStyle.height = sizeMin + sizeMax * random() + "px";
+    innerStyle.width = "100%";
+    innerStyle.height = "100%";
     innerStyle.backgroundColor = theme();
 
-    outerStyle.perspective = '50px';
-    outerStyle.transform = 'rotate(' + (360 * random()) + 'deg)';
-    this.axis = 'rotate3D(' +
-      cos(360 * random()) + ',' +
-      cos(360 * random()) + ',0,';
+    outerStyle.perspective = "50px";
+    outerStyle.transform = "rotate(" + 360 * random() + "deg)";
+    this.axis =
+      "rotate3D(" + cos(360 * random()) + "," + cos(360 * random()) + ",0,";
     this.theta = 360 * random();
     this.dTheta = dThetaMin + dThetaMax * random();
-    innerStyle.transform = this.axis + this.theta + 'deg)';
+    innerStyle.transform = this.axis + this.theta + "deg)";
 
     this.x = $window.width() * random();
     this.y = -deviation;
     this.dx = sin(dxThetaMin + dxThetaMax * random());
     this.dy = dyMin + dyMax * random();
-    outerStyle.left = this.x + 'px';
-    outerStyle.top = this.y + 'px';
+    outerStyle.left = this.x + "px";
+    outerStyle.top = this.y + "px";
 
     // Create the periodic spline
     this.splineX = createPoisson();
@@ -301,7 +325,7 @@ function confetti() {
       this.theta += this.dTheta * delta;
 
       // Compute spline and convert to polar
-      var phi = this.frame % 7777 / 7777,
+      var phi = (this.frame % 7777) / 7777,
         i = 0,
         j = 1;
       while (phi >= this.splineX[j]) i = j++;
@@ -312,13 +336,12 @@ function confetti() {
       );
       phi *= PI2;
 
-      outerStyle.left = this.x + rho * cos(phi) + 'px';
-      outerStyle.top = this.y + rho * sin(phi) + 'px';
-      innerStyle.transform = this.axis + this.theta + 'deg)';
+      outerStyle.left = this.x + rho * cos(phi) + "px";
+      outerStyle.top = this.y + rho * sin(phi) + "px";
+      innerStyle.transform = this.axis + this.theta + "deg)";
       return this.y > height + deviation;
     };
   }
-
 
   function poof() {
     if (!frame) {
@@ -327,13 +350,12 @@ function confetti() {
 
       // Add confetti
 
-      var theme = colorThemes[onlyOnKonami ? colorThemes.length * random() | 0 : 0],
+      var theme =
+          colorThemes[onlyOnKonami ? (colorThemes.length * random()) | 0 : 0],
         count = 0;
 
       (function addConfetto() {
-
-        if (onlyOnKonami && ++count > particles)
-          return timer = undefined;
+        if (onlyOnKonami && ++count > particles) return (timer = undefined);
 
         if (isRunning) {
           var confetto = new Confetto(theme);
@@ -343,7 +365,6 @@ function confetti() {
           timer = setTimeout(addConfetto, spread * random());
         }
       })(0);
-
 
       // Start the loop
       var prev = undefined;
@@ -360,7 +381,7 @@ function confetti() {
         }
 
         if (timer || confetti.length)
-          return frame = requestAnimationFrame(loop);
+          return (frame = requestAnimationFrame(loop));
 
         // Cleanup
         document.body.removeChild(container);
@@ -370,9 +391,10 @@ function confetti() {
   }
 
   $window.keydown(function (event) {
-    pointer = konami[pointer] === event.which ?
-      pointer + 1 :
-      +(event.which === konami[0]);
+    pointer =
+      konami[pointer] === event.which
+        ? pointer + 1
+        : +(event.which === konami[0]);
     if (pointer === konami.length) {
       pointer = 0;
       poof();
@@ -380,4 +402,4 @@ function confetti() {
   });
 
   if (!onlyOnKonami) poof();
-};
+}
